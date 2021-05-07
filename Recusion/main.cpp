@@ -5,13 +5,15 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+//#define DataType unsigned long long int
+typedef long long int DataType;
 void elevator(int floor);
 int factorial(int n);
 double power(double a, int n);
 int fib(int n);
 unsigned long long int fib_speed(int s);
-void Fibonacci1(int n, unsigned long long int a = 0, unsigned long long int b = 1);
-void Fibonacci2(int n, unsigned long long int a = 0, unsigned long long int b = 1);
+void Fibonacci1(int n, DataType a = 0, DataType b = 1);
+void Fibonacci2(int n, DataType a = 0, DataType b = 1);
 
 //#define RECURSION_BASICS
 //#define FACTORIAL
@@ -145,7 +147,7 @@ unsigned long long int fib_speed(int s)
 	return c;
 }
 
-void Fibonacci1(int n, unsigned long long int a, unsigned long long int b)
+void Fibonacci1(int n, DataType a, DataType b)
 {
 	//Выводит числа Фибоначчи, до заданного предела
 	if (a > n) return;
@@ -153,12 +155,13 @@ void Fibonacci1(int n, unsigned long long int a, unsigned long long int b)
 	Fibonacci1(n, b, a + b);
 }
 
-void Fibonacci2(int n, unsigned long long int a, unsigned long long int b)
+void Fibonacci2(int n, DataType a, DataType b)
 {
 	//Выводит заданное количество чисел из ряда Фибоначчи
-	if (n == 0) return;
-	cout << a << '\t';
-	Fibonacci2(n-1, b, a + b);
+	static int i = 0;
+	if (i > n) return;
+	cout << i++ << " - " << a << endl;
+	Fibonacci2(n, b, a + b);
 }
 
 void elevator(int floor)
