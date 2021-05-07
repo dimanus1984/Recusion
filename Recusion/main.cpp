@@ -58,7 +58,8 @@ void main()
 	cout << endl;
 
 	cout << "Быстрая функция выведет заданное количество чисел Фибоначчи: "; cin >> s;
-	fib_speed(s);
+	//fib_speed(s);
+	for (int i = 0; i < s; ++i) cout << fib_speed(i) << " | ";
 	cout << endl;
 }
 
@@ -100,18 +101,35 @@ int fib(int n)
 
 	//2 способ
 	return n == 0 ? 0 : (n <= 2) ? 1 : (fib(n - 1) + fib(n - 2));
+
 }
 
 int fib_speed(int s)
 {
-	const int SIZE = 200;
+	/*const int SIZE = 200;
 	unsigned long long fibonachi[SIZE] = { 0, 1 };
 
 	for (int i = 2; i < SIZE; i++)
 		fibonachi[i] = fibonachi[i - 1] + fibonachi[i - 2];
 	for (int i = 0; i < s; i++)
 		cout << fibonachi[i] << " | ";
-	return 0;
+	return 0;*/
+
+	//Числа Фибоначчи итерация
+	unsigned long long c = 0;
+	unsigned long long a = 1;
+	unsigned long long b = 1;
+	for (int i = 0; i < s; i++)
+	{
+		if (i < 2)c = 1;
+		else if(s >= 2)
+		{
+		c = a + b;
+		a = b;
+		b = c;
+		}
+	}
+	return c;
 }
 
 void elevator(int floor)
