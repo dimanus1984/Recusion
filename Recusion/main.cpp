@@ -10,10 +10,13 @@ int factorial(int n);
 double power(double a, int n);
 int fib(int n);
 unsigned long long int fib_speed(int s);
+void Fibonacci1(int n, unsigned long long int a = 0, unsigned long long int b = 1);
+void Fibonacci2(int n, unsigned long long int a = 0, unsigned long long int b = 1);
 
 //#define RECURSION_BASICS
 //#define FACTORIAL
 //#define POWER
+//#define HOME_WORK
 
 void main()
 {
@@ -47,6 +50,7 @@ void main()
 	cout << "Факториал для числа в степени " << a << " = " << power(a, n) << endl << endl;
 #endif // POWER
 
+#if HOME_WORK
 	int n = 0, h = 0, s = 0;
 	cout << "Введите заданное количество чисел для вычисления числа Фибоначчи: "; cin >> n;
 	cout << "Последовательность числа Фибоначчи:" << endl;
@@ -61,6 +65,13 @@ void main()
 	//fib_speed(s);
 	for (int i = 0; i < s; ++i) cout << i << ": " << fib_speed(i) << endl;
 	cout << endl;
+#endif // HOME_WORK
+
+	int n;
+	//cout << "Введите значение, до которого нужно вывести ряд Фибоначчи: "; cin >> n;
+	//Fibonacci1(n);
+	cout << "Сколько чисел из ряда Фибоначчи нужно вывести: "; cin >> n;
+	Fibonacci2(n);
 }
 
 int factorial(int n)
@@ -132,6 +143,22 @@ unsigned long long int fib_speed(int s)
 		}
 	}
 	return c;
+}
+
+void Fibonacci1(int n, unsigned long long int a, unsigned long long int b)
+{
+	//Выводит числа Фибоначчи, до заданного предела
+	if (a > n) return;
+	cout << a << '\t';
+	Fibonacci1(n, b, a + b);
+}
+
+void Fibonacci2(int n, unsigned long long int a, unsigned long long int b)
+{
+	//Выводит заданное количество чисел из ряда Фибоначчи
+	if (n == 0) return;
+	cout << a << '\t';
+	Fibonacci2(n-1, b, a + b);
 }
 
 void elevator(int floor)
