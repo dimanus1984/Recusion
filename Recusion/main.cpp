@@ -121,7 +121,7 @@ int fib_speed(int s)
 	unsigned long long b = 1;
 	for (int i = 0; i < s; i++)
 	{
-		if (i < 2)c = 1;
+		if (i < 2) c = 1;
 		else if(s >= 2)
 		{
 		c = a + b;
