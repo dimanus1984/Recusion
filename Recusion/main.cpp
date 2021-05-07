@@ -9,7 +9,7 @@ void elevator(int floor);
 int factorial(int n);
 double power(double a, int n);
 int fib(int n);
-int fib_speed(int s);
+unsigned long long int fib_speed(int s);
 
 //#define RECURSION_BASICS
 //#define FACTORIAL
@@ -50,16 +50,16 @@ void main()
 	int n = 0, h = 0, s = 0;
 	cout << "Введите заданное количество чисел для вычисления числа Фибоначчи: "; cin >> n;
 	cout << "Последовательность числа Фибоначчи:" << endl;
-	for (int i = 0; i < n; ++i) cout << fib(i) << " | ";
+	for (int i = 0; i < n; ++i) cout << i << ": " << fib(i) << endl;
 	cout << endl;
 
 	cout << "Функция выведет ряд чисел Фибоначчи до указанного числа: "; cin >> h;
 	for (int i = 0; fib(i) < h; ++i) cout << fib(i) << " | ";
-	cout << endl;
+	cout << endl << endl;
 
 	cout << "Быстрая функция выведет заданное количество чисел Фибоначчи: "; cin >> s;
 	//fib_speed(s);
-	for (int i = 0; i < s; ++i) cout << fib_speed(i) << " | ";
+	for (int i = 0; i < s; ++i) cout << i << ": " << fib_speed(i) << endl;
 	cout << endl;
 }
 
@@ -100,14 +100,16 @@ int fib(int n)
 	return fib(n - 1) + fib(n - 2);*/
 
 	//2 способ
-	return n == 0 ? 0 : (n <= 2) ? 1 : (fib(n - 1) + fib(n - 2));
+	//return n == 0 ? 0 : (n <= 2) ? 1 : (fib(n - 1) + fib(n - 2));
 
+	//3 способ
+	return n < 2 ? n : fib(n - 2) + fib(n - 1);
 }
 
-int fib_speed(int s)
+unsigned long long int fib_speed(int s)
 {
 	/*const int SIZE = 200;
-	unsigned long long fibonachi[SIZE] = { 0, 1 };
+	unsigned long long int fibonachi[SIZE] = { 0, 1 };
 
 	for (int i = 2; i < SIZE; i++)
 		fibonachi[i] = fibonachi[i - 1] + fibonachi[i - 2];
@@ -116,9 +118,9 @@ int fib_speed(int s)
 	return 0;*/
 
 	//Числа Фибоначчи итерация
-	unsigned long long c = 0;
-	unsigned long long a = 1;
-	unsigned long long b = 1;
+	unsigned long long int c = 0;
+	unsigned long long int a = 1;
+	unsigned long long int b = 1;
 	for (int i = 0; i < s; i++)
 	{
 		if (i < 2) c = 1;
